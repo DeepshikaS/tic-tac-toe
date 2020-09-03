@@ -38,10 +38,16 @@ class App extends Component {
         board[p1] == board[p2] &&
         board[p2] == board[p3] &&
         board[p3] == board[p1]
-      )
+      ) {
         toast.success(`winner ${player_turn} `, {
           position: toast.POSITION.TOP_CENTER,
         });
+        alert(player_turn);
+        this.setState({
+          board: ["", "", "", "", "", "", "", "", ""],
+          player_turn: "X",
+        });
+      }
     }
 
     player_turn = player_turn == "X" ? "O" : "X";

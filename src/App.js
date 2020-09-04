@@ -14,6 +14,13 @@ class App extends Component {
     };
   }
 
+  handleClick = () => {
+    this.setState({
+      board: ["", "", "", "", "", "", "", "", ""],
+      player_turn: "X",
+    });
+  };
+
   squareClicked(index) {
     let player_turn = this.state.player_turn;
     let board = this.state.board;
@@ -42,16 +49,11 @@ class App extends Component {
         toast.success(`winner ${player_turn} `, {
           position: toast.POSITION.TOP_CENTER,
         });
-        alert(player_turn);
-        this.setState({
-          board: ["", "", "", "", "", "", "", "", ""],
-          player_turn: "X",
-        });
       }
     }
 
     player_turn = player_turn == "X" ? "O" : "X";
-
+    console.log("player turn:", player_turn);
     this.setState({
       player_turn: player_turn,
       board: board,
@@ -73,6 +75,9 @@ class App extends Component {
             );
           })}
         </div>
+        <button className="button" onClick={this.handleClick}>
+          Reset
+        </button>
       </div>
     );
   }
